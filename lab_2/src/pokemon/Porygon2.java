@@ -1,3 +1,6 @@
+package pokemon;
+
+import move.*;
 import ru.ifmo.se.pokemon.*;
 
 public class Porygon2 extends Porygon {
