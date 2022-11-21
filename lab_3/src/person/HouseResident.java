@@ -11,6 +11,17 @@ public class HouseResident extends Person{
         super(name, location);
     }
 
+    @Override
+    public String toString() {
+        String name = this.getName();
+        LocationStates location = this.getLocation();
+        MindStates mind = this.getMind();
+        return "Carlson{" +
+                "name=" + name +
+                "location=" + location +
+                "mind=" + mind + "}";
+    }
+
     public void expressEmotions() {
         MindStates[] mindArray = new MindStates[]{MindStates.GRUMPY, MindStates.SCARED};
         int mindRandom = new Random().nextInt(mindArray.length);

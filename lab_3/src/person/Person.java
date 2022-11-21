@@ -19,6 +19,14 @@ public abstract class Person implements MindAction, SoundAction {
         return this.name;
     }
 
+    public LocationStates getLocation() {
+        return this.location;
+    }
+
+    public MindStates getMind() {
+        return this.mind;
+    }
+
     @Override
     public void changeMind(MindStates state) {
         this.mind = state;

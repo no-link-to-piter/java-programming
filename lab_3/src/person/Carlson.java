@@ -1,6 +1,7 @@
 package person;
 
 import enums.LocationStates;
+import enums.MindStates;
 import food.Bun;
 import gun.Pistol;
 
@@ -27,6 +28,24 @@ public class Carlson extends Person{
     public void setBun(Bun bun) {
         this.bun = bun;
     }
+
+    @Override
+    public String toString() {
+        String name = this.getName();
+        LocationStates location = this.getLocation();
+        MindStates mind = this.getMind();
+        Pistol p = this.getPistol();
+        Bun b = this.getBun();
+        int bullets = p.getBullets();
+        int amount = b.getAmount();
+        return "Carlson{" +
+                "name=" + name +
+                "location=" + location +
+                "mind=" + mind +
+                "Pistol{" + "bullets=" + bullets +
+                "}Bun{" + "amount=" + amount + "}}";
+    }
+
 
     public void usePistol() {
         Pistol p = this.getPistol();

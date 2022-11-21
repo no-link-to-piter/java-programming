@@ -7,6 +7,12 @@ public class Bun extends Food{
     }
 
     @Override
+    public String toString() {
+        int amount = this.getAmount();
+        return "Bun{" + "amount=" + amount + "}";
+    }
+
+    @Override
     public void eat(String name) {
         int currentAmount = this.getAmount();
         this.setAmount(currentAmount - 1);
