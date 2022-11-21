@@ -2,15 +2,13 @@ package person;
 
 import enums.LocationStates;
 import enums.MindStates;
-import food.Bun;
-import gun.Pistol;
 
 import java.util.Objects;
 
 public class Baby extends Person{
 
-    public Baby(String name, LocationStates location) {
-        super(name, location);
+    public Baby(String name, LocationStates location, MindStates mind) {
+        super(name, location, mind);
     }
 
     @Override

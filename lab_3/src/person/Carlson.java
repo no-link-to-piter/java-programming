@@ -2,8 +2,8 @@ package person;
 
 import enums.LocationStates;
 import enums.MindStates;
-import food.Bun;
-import gun.Pistol;
+import item.Bun;
+import item.Pistol;
 
 import java.util.Objects;
 
@@ -11,8 +11,8 @@ public class Carlson extends Person{
     private Pistol pistol;
     private Bun bun;
 
-    public Carlson(String name, LocationStates location) {
-        super(name, location);
+    public Carlson(String name, LocationStates location, MindStates mind) {
+        super(name, location, mind);
     }
 
     public Pistol getPistol() {

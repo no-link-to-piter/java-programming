@@ -1,4 +1,4 @@
-package gun;
+package item;
 
 import enums.SoundStates;
 
@@ -6,8 +6,8 @@ import java.util.Objects;
 
 public class Pistol extends Gun{
 
-    public Pistol(int bullets) {
-        super(bullets);
+    public Pistol(int amount, int bullets) {
+        super(amount, bullets);
     }
 
     @Override

@@ -2,5 +2,6 @@ package enums;
 
 public enum LocationStates {
     FLAT,
-    ROOF
+    ROOF,
+    DEFAULT
 }

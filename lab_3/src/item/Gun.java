@@ -1,11 +1,10 @@
-package gun;
+package item;
 
-import interfaces.SoundAction;
-
-public abstract class Gun implements SoundAction {
+public abstract class Gun extends Item {
     private int bullets;
-    public Gun(int bullets) {
-        this.bullets = bullets;
+    public Gun(int amount, int bullets) {
+        super(amount);
+        this.bullets = bullets <= 0 ? 1 : bullets;
     }
 
     public int getBullets() {

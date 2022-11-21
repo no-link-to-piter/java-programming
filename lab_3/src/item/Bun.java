@@ -1,6 +1,4 @@
-package food;
-
-import gun.Pistol;
+package item;
 
 import java.util.Objects;
 
@@ -31,8 +29,14 @@ public class Bun extends Food{
 
     @Override
     public void eat(String name) {
-        int currentAmount = this.getAmount();
-        this.setAmount(currentAmount - 1);
-        System.out.println(name + " съедает булочку");
+        int amount = this.getAmount();
+        if (amount > 0) {
+            int leftAmount = amount - 1;
+            String action = leftAmount == 0 ? " съедает последнюю булочку" : " съедает булочку" + "\n" + "У " + name + " осталось " + leftAmount + " бул.";
+            System.out.println(name + action);
+            this.setAmount(leftAmount);
+        } else {
+            System.out.println("У " + name + " нет булочек");
+        }
     }
 }

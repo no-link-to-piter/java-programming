@@ -3,14 +3,13 @@ package person;
 import enums.LocationStates;
 import enums.MindStates;
 import enums.SoundStates;
-import gun.Pistol;
 
 import java.util.Objects;
 import java.util.Random;
 
 public class HouseResident extends Person{
-    public HouseResident(String name, LocationStates location) {
-        super(name, location);
+    public HouseResident(String name, LocationStates location, MindStates mind) {
+        super(name, location, mind);
     }
 
     @Override

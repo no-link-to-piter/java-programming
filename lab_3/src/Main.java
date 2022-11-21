@@ -1,7 +1,7 @@
 import enums.LocationStates;
 import enums.MindStates;
-import food.Bun;
-import gun.Pistol;
+import item.Bun;
+import item.Pistol;
 import person.Baby;
 import person.Carlson;
 import person.HouseResident;
@@ -9,20 +9,20 @@ import person.HouseResident;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) {
 
-        Carlson carlson = new Carlson("Карлсон", LocationStates.ROOF);
-        Baby baby = new Baby("Малыш", LocationStates.ROOF);
+    public static void main(String[] args) {
+        Carlson carlson = new Carlson("Карлсон", LocationStates.ROOF, MindStates.CALM);
+        Baby baby = new Baby("Малыш", LocationStates.ROOF, MindStates.CALM);
 
         int amountResidents = 6;
         HouseResident[] residents = new HouseResident[amountResidents];
         for(int i = 0; i < amountResidents; i++) {
             int residentNumber = i + 1;
-            residents[i] = new HouseResident("Жилец " + residentNumber, LocationStates.FLAT);
+            residents[i] = new HouseResident("Жилец " + residentNumber, LocationStates.FLAT, MindStates.CALM);
         }
 
-        Pistol pistol = new Pistol(10);
-        Bun bun = new Bun(2);
+        Pistol pistol = new Pistol(1, 10);
+        Bun bun = new Bun(0);
 
         carlson.setPistol(pistol);
         carlson.setBun(bun);
@@ -42,7 +42,7 @@ public class Main {
         // Малыш начинает злиться
         baby.changeMind(MindStates.ANGRY);
 
-        // Карлсон съедает становится спокойным и съедает булочку
+        // Карлсон становится спокойным и съедает булочку
         carlson.changeMind(MindStates.CALM);
         carlson.eatBun();
     }
