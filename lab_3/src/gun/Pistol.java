@@ -26,8 +26,14 @@ public class Pistol extends Gun{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pistol)) return false;
+        if (o == null || o.getClass() != this.getClass()) return false;
         Pistol that = (Pistol) o;
         return this.getBullets() == that.getBullets();
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getBullets());
+    }
+
 }

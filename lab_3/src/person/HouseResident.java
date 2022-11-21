@@ -5,6 +5,7 @@ import enums.MindStates;
 import enums.SoundStates;
 import gun.Pistol;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class HouseResident extends Person{
@@ -26,11 +27,16 @@ public class HouseResident extends Person{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HouseResident)) return false;
+        if (o == null || o.getClass() != this.getClass()) return false;
         HouseResident that = (HouseResident) o;
         return (this.getName()).equals(that.getName())
                 && (this.getLocation()).equals(that.getLocation())
                 && (this.getMind()).equals(that.getMind());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getLocation(), this.getMind());
     }
 
     public void expressEmotions() {

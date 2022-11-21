@@ -5,6 +5,8 @@ import enums.MindStates;
 import food.Bun;
 import gun.Pistol;
 
+import java.util.Objects;
+
 public class Carlson extends Person{
     private Pistol pistol;
     private Bun bun;
@@ -49,13 +51,18 @@ public class Carlson extends Person{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Carlson)) return false;
+        if (o == null || o.getClass() != this.getClass()) return false;
         Carlson that = (Carlson) o;
         return (this.getName()).equals(that.getName())
                 && (this.getLocation()).equals(that.getLocation())
                 && (this.getMind()).equals(that.getMind())
                 && this.getPistol().equals(that.getPistol())
                 && this.getBun().equals(that.getBun());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getLocation(), this.getMind(), this.getPistol(), this.getBun());
     }
 
     public void usePistol() {

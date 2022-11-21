@@ -2,6 +2,8 @@ package food;
 
 import gun.Pistol;
 
+import java.util.Objects;
+
 public class Bun extends Food{
 
     public Bun(int amount) {
@@ -17,9 +19,14 @@ public class Bun extends Food{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Bun)) return false;
+        if (o == null || o.getClass() != this.getClass()) return false;
         Bun that = (Bun) o;
         return this.getAmount() == that.getAmount();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getAmount());
     }
 
     @Override

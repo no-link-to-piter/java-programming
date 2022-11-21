@@ -5,6 +5,8 @@ import enums.MindStates;
 import food.Bun;
 import gun.Pistol;
 
+import java.util.Objects;
+
 public class Baby extends Person{
 
     public Baby(String name, LocationStates location) {
@@ -25,12 +27,16 @@ public class Baby extends Person{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Baby)) return false;
+        if (o == null || o.getClass() != this.getClass()) return false;
         Baby that = (Baby) o;
         return (this.getName()).equals(that.getName())
                 && (this.getLocation()).equals(that.getLocation())
                 && (this.getMind()).equals(that.getMind());
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getLocation(), this.getMind());
+    }
 
 }
