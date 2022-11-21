@@ -46,6 +46,17 @@ public class Carlson extends Person{
                 "}Bun{" + "amount=" + amount + "}}";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Carlson)) return false;
+        Carlson that = (Carlson) o;
+        return (this.getName()).equals(that.getName())
+                && (this.getLocation()).equals(that.getLocation())
+                && (this.getMind()).equals(that.getMind())
+                && this.getPistol().equals(that.getPistol())
+                && this.getBun().equals(that.getBun());
+    }
 
     public void usePistol() {
         Pistol p = this.getPistol();

@@ -22,5 +22,15 @@ public class Baby extends Person{
                 "mind=" + mind + "}";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Baby)) return false;
+        Baby that = (Baby) o;
+        return (this.getName()).equals(that.getName())
+                && (this.getLocation()).equals(that.getLocation())
+                && (this.getMind()).equals(that.getMind());
+    }
+
 
 }

@@ -1,5 +1,7 @@
 package food;
 
+import gun.Pistol;
+
 public class Bun extends Food{
 
     public Bun(int amount) {
@@ -10,6 +12,14 @@ public class Bun extends Food{
     public String toString() {
         int amount = this.getAmount();
         return "Bun{" + "amount=" + amount + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bun)) return false;
+        Bun that = (Bun) o;
+        return this.getAmount() == that.getAmount();
     }
 
     @Override
