@@ -2,13 +2,14 @@ package item;
 
 import enums.SoundStates;
 import exceptions.AmountException;
+import exceptions.PropertyQuantityException;
 import person.Person;
 
 import java.util.Objects;
 
 public class Pistol extends Gun{
 
-    public Pistol(int amount) {
+    public Pistol(int amount) throws AmountException {
         super(amount);
     }
 
@@ -19,7 +20,7 @@ public class Pistol extends Gun{
         try {
             setBullets(curBullets - 1);
             makeSound(p, SoundStates.GUNSHOT_SOUND);
-        } catch (AmountException e) {
+        } catch (PropertyQuantityException e) {
             System.out.println(name + " пытается выстрелить, однако у него не получается ведь обойма пустая");
         }
     }
@@ -29,10 +30,10 @@ public class Pistol extends Gun{
         try {
             setBullets(bullets);
             System.out.println(name + " вставляет " + bullets + " пуль(-и)(-ю) в оружие");
-        } catch (AmountException e) {
+        } catch (PropertyQuantityException e) {
             e.printStackTrace();
-            setBullets(e.getModifiedAmount());
-            System.out.println(name + " вставляет " + e.getModifiedAmount() + " пуль(-и)(-ю) в оружие");
+            setBullets(e.getModifiedQuantity());
+            System.out.println(name + " вставляет " + e.getModifiedQuantity() + " пуль(-и)(-ю) в оружие");
 
         }
     }

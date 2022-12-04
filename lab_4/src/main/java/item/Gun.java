@@ -1,11 +1,12 @@
 package item;
 
 import exceptions.AmountException;
+import exceptions.PropertyQuantityException;
 import person.Person;
 
 public abstract class Gun extends Item {
     private int bullets;
-    public Gun(int amount) {
+    public Gun(int amount) throws AmountException {
         super(amount);
     }
 
@@ -13,8 +14,8 @@ public abstract class Gun extends Item {
         return this.bullets;
     }
 
-    public void setBullets(int bullets) throws AmountException {
-        if (bullets < 0) throw new AmountException(bullets);
+    public void setBullets(int bullets) throws PropertyQuantityException {
+        if (bullets < 0) throw new PropertyQuantityException(bullets);
         this.bullets = bullets;
     }
 

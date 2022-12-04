@@ -1,10 +1,11 @@
 package item;
 
+import exceptions.AmountException;
 import person.Person;
 
 public abstract class Food extends Item {
 
-    public Food(int amount) {
+    public Food(int amount) throws AmountException {
         super(amount);
     }
 
