@@ -2,6 +2,7 @@ package person;
 
 import enums.LocationStates;
 import enums.MindStates;
+import enums.SoundStates;
 import interfaces.MindAction;
 import interfaces.SoundAction;
 
@@ -57,6 +58,10 @@ public abstract class Person implements MindAction, SoundAction {
             System.out.println(personName +
                     (prevMind != MindStates.SCARED ? " пугается" : " остается испуганным"));
         }
+    }
+
+    public void say(SoundStates sound) {
+        makeSound(this, sound);
     }
 }
 

@@ -2,6 +2,8 @@ package org.example;
 
 import enums.LocationStates;
 import enums.MindStates;
+import enums.SoundStates;
+import exceptions.AmountException;
 import item.Bun;
 import item.Pistol;
 import person.Baby;
@@ -23,13 +25,22 @@ public class Main {
             residents[i] = new HouseResident("Жилец " + residentNumber, LocationStates.FLAT, MindStates.CALM);
         }
 
-        Pistol pistol = new Pistol(1, 10);
-        Bun bun = new Bun(0);
+        try {
+            carlson.setPistol(new Pistol(1));
+        } catch (AmountException e) {
+            e.printStackTrace();
+            carlson.setPistol(new Pistol(e.getModifiedAmount()));
+        }
 
-        carlson.setPistol(pistol);
-        carlson.setBun(bun);
+        try {
+            carlson.setBun(new Bun(2));
+        } catch (AmountException e) {
+            e.printStackTrace();
+            carlson.setBun(new Bun(e.getModifiedAmount()));
+        }
 
         // Карлсон использует пистолет и ликует
+        carlson.loadPistol(10);
         carlson.usePistol();
         carlson.changeMind(MindStates.EXULTANT);
 
@@ -39,7 +50,7 @@ public class Main {
         }
 
         // Кто-то Хочет вызвать полицию
-        residents[new Random().nextInt(residents.length)].say();
+        residents[new Random().nextInt(residents.length)].say(SoundStates.SAY_CALL_POLICE);
 
         // Малыш начинает злиться
         baby.changeMind(MindStates.ANGRY);
@@ -47,5 +58,8 @@ public class Main {
         // Карлсон становится спокойным и съедает булочку
         carlson.changeMind(MindStates.CALM);
         carlson.eatBun();
+
+        // Карлсон поет
+        carlson.say(SoundStates.SING_SONG);
     }
 }

@@ -43,9 +43,4 @@ public class HouseResident extends Person{
         int mindRandom = new Random().nextInt(mindArray.length);
         this.changeMind(mindArray[mindRandom]);
     }
-
-    public void say() {
-        String residentName = this.getName();
-        makeSound(residentName, SoundStates.SAY_CALL_POLICE);
-    }
 }

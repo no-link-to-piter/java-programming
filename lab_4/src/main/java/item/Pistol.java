@@ -1,20 +1,40 @@
 package item;
 
 import enums.SoundStates;
+import exceptions.AmountException;
+import person.Person;
 
 import java.util.Objects;
 
 public class Pistol extends Gun{
 
-    public Pistol(int amount, int bullets) {
-        super(amount, bullets);
+    public Pistol(int amount) {
+        super(amount);
     }
 
     @Override
-    public void shoot(String name) {
+    public void shoot(Person p) {
         int curBullets = this.getBullets();
-        setBullets(curBullets - 1);
-        makeSound(name, SoundStates.GUNSHOT_SOUND);
+        String name = p.getName();
+        try {
+            setBullets(curBullets - 1);
+            makeSound(p, SoundStates.GUNSHOT_SOUND);
+        } catch (AmountException e) {
+            System.out.println(name + " пытается выстрелить, однако у него не получается ведь обойма пустая");
+        }
+    }
+
+    public void load(Person p, int bullets) {
+        String name = p.getName();
+        try {
+            setBullets(bullets);
+            System.out.println(name + " вставляет " + bullets + " пуль(-и)(-ю) в оружие");
+        } catch (AmountException e) {
+            e.printStackTrace();
+            setBullets(e.getModifiedAmount());
+            System.out.println(name + " вставляет " + e.getModifiedAmount() + " пуль(-и)(-ю) в оружие");
+
+        }
     }
 
     @Override

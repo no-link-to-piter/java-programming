@@ -1,5 +1,8 @@
 package item;
 
+import exceptions.AmountException;
+import person.Person;
+
 import java.util.Objects;
 
 public class Bun extends Food{
@@ -28,15 +31,15 @@ public class Bun extends Food{
     }
 
     @Override
-    public void eat(String name) {
+    public void eat(Person p) {
         int amount = this.getAmount();
-        if (amount > 0) {
+        String name = p.getName();
+        try {
             int leftAmount = amount - 1;
-            String action = leftAmount == 0 ? " съедает последнюю булочку" : " съедает булочку" + "\n" + "У " + name + " осталось " + leftAmount + " бул.";
-            System.out.println(name + action);
             this.setAmount(leftAmount);
-        } else {
-            System.out.println("У " + name + " нет булочек");
+            System.out.println(name + (leftAmount == 0 ? " съедает последнюю булочку" : " съедает булочку" + "\n" + "У " + name + " осталось " + leftAmount + " бул."));
+        } catch (AmountException e) {
+            System.out.println(name + " хочет съесть булочку, однако их уже не осталось");
         }
     }
 }

@@ -65,15 +65,18 @@ public class Carlson extends Person {
         return Objects.hash(this.getName(), this.getLocation(), this.getMind(), this.getPistol(), this.getBun());
     }
 
+    public void loadPistol(int bullets) {
+        Pistol p = this.getPistol();
+        p.load(this, bullets);
+    }
+
     public void usePistol() {
         Pistol p = this.getPistol();
-        String personName = this.getName();
-        p.shoot(personName);
+        p.shoot(this);
     }
 
     public void eatBun() {
         Bun b = this.getBun();
-        String currentName = this.getName();
-        b.eat(currentName);
+        b.eat(this);
     }
 }
