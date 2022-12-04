@@ -14,6 +14,6 @@ public abstract class Item implements SoundAction {
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
+        this.amount = amount <= 0 ? 1 : amount;
     }
 }

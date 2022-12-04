@@ -7,7 +7,7 @@ import item.Pistol;
 
 import java.util.Objects;
 
-public class Carlson extends Person{
+public class Carlson extends Person {
     private Pistol pistol;
     private Bun bun;
 
