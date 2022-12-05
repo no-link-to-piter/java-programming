@@ -4,6 +4,8 @@ import enums.LocationStates;
 import enums.MindStates;
 import enums.NatureStates;
 import enums.RelativeStates;
+import item.Bun;
+import item.Pistol;
 import person.Person;
 
 import java.util.Objects;
@@ -43,6 +45,37 @@ public class AlongTheStory {
 
         public LocationStates getNextLocation() {
             return this.nextLocation;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || o.getClass() != this.getClass()) return false;
+            ThirdPartyPerson that = (ThirdPartyPerson) o;
+            return (this.getName()).equals(that.getName())
+                    && (this.getPlace()).equals(that.getPlace())
+                    && (this.getMind()).equals(that.getMind())
+                    && this.getNextLocation().equals(that.getNextLocation())
+                    && this.getRelativeType().equals(that.getRelativeType())
+                    && this.getNature().equals(that.getNature());
+        }
+
+
+        @Override
+        public String toString() {
+            return "Carlson{" +
+                    "name=" + this.getName() +
+                    "place=" + this.getPlace().toString() +
+                    "mind=" + this.getMind() +
+                    "nature=" + this.getNature() +
+                    "relativeType=" + this.getRelativeType() +
+                    "nextLocation=" + this.getNextLocation() + "}";
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getNature(),
+                    this.getNextLocation(), this.getRelativeType());
         }
     }
 

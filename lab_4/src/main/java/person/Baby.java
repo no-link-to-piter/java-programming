@@ -14,13 +14,11 @@ public class Baby extends Person{
 
     @Override
     public String toString() {
-        String name = this.getName();
-        LocationStates location = this.getPlace().getLocation();
-        MindStates mind = this.getMind();
-        return "Carlson{" +
-                "name=" + name +
-                "location=" + location +
-                "mind=" + mind + "}";
+        return "Baby{" +
+                "name=" + this.getName() +
+                "place=" + this.getPlace().toString() +
+                "mind=" + this.getMind() +
+                "nature=" + this.getNature() + "}";
     }
 
     @Override
@@ -29,13 +27,14 @@ public class Baby extends Person{
         if (o == null || o.getClass() != this.getClass()) return false;
         Baby that = (Baby) o;
         return (this.getName()).equals(that.getName())
-                && (this.getPlace()).equals(this.getPlace())
-                && (this.getMind()).equals(that.getMind());
+                && (this.getPlace()).equals(that.getPlace())
+                && (this.getMind()).equals(that.getMind())
+                && this.getNature().equals(that.getNature());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPlace(), this.getMind());
+        return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getNature());
     }
 
 }

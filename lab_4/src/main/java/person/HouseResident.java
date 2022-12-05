@@ -14,13 +14,11 @@ public class HouseResident extends Person {
 
     @Override
     public String toString() {
-        String name = this.getName();
-        LocationStates location = this.getPlace().getLocation();
-        MindStates mind = this.getMind();
-        return "Carlson{" +
-                "name=" + name +
-                "location=" + location +
-                "mind=" + mind + "}";
+        return "HouseResident{" +
+                "name=" + this.getName() +
+                "place=" + this.getPlace().toString() +
+                "mind=" + this.getMind() +
+                "nature=" + this.getNature() + "}";
     }
 
     @Override
@@ -30,12 +28,13 @@ public class HouseResident extends Person {
         HouseResident that = (HouseResident) o;
         return (this.getName()).equals(that.getName())
                 && (this.getPlace()).equals(that.getPlace())
-                && (this.getMind()).equals(that.getMind());
+                && (this.getMind()).equals(that.getMind())
+                && this.getNature().equals(that.getNature());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPlace(), this.getMind());
+        return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getNature());
     }
 
     public void expressEmotions() {

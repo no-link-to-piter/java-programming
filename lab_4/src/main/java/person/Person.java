@@ -19,7 +19,7 @@ public abstract class Person implements MindAction, SoundAction {
         this.name = name;
         this.place = place;
         this.mind = mind == null ? MindStates.CALM : mind;
-        this.nature = nature;
+        this.nature = nature == null ? NatureStates.NORMAL : nature;
     }
 
     public Person(String name, AlongTheStory.Place place, MindStates mind) {

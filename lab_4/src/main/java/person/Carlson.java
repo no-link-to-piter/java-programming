@@ -34,19 +34,13 @@ public class Carlson extends Person {
 
     @Override
     public String toString() {
-        String name = this.getName();
-        LocationStates location = this.getPlace().getLocation();
-        MindStates mind = this.getMind();
-        Pistol p = this.getPistol();
-        Bun b = this.getBun();
-        int bullets = p.getBullets();
-        int amount = b.getAmount();
         return "Carlson{" +
-                "name=" + name +
-                "location=" + location +
-                "mind=" + mind +
-                "Pistol{" + "bullets=" + bullets +
-                "}Bun{" + "amount=" + amount + "}}";
+                "name=" + this.getName() +
+                "place=" + this.getPlace().toString() +
+                "mind=" + this.getMind() +
+                "nature=" + this.getNature() +
+                "pistol=" + this.getPistol().toString() +
+                "bun=" + this.getBun().toString() + "}";
     }
 
     @Override
@@ -54,16 +48,18 @@ public class Carlson extends Person {
         if (this == o) return true;
         if (o == null || o.getClass() != this.getClass()) return false;
         Carlson that = (Carlson) o;
-        return (this.getName()).equals(that.getName())
-                && (this.getPlace()).equals(that.getPlace())
-                && (this.getMind()).equals(that.getMind())
+        return this.getName().equals(that.getName())
+                && this.getPlace().equals(that.getPlace())
+                && this.getMind().equals(that.getMind())
+                && this.getNature().equals(that.getNature())
                 && this.getPistol().equals(that.getPistol())
                 && this.getBun().equals(that.getBun());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getPistol(), this.getBun());
+        return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getNature(),
+                this.getPistol(), this.getBun());
     }
 
     public void loadPistol(int bullets) {
