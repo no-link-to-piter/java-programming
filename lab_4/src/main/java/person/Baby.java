@@ -2,19 +2,20 @@ package person;
 
 import enums.LocationStates;
 import enums.MindStates;
+import story.AlongTheStory;
 
 import java.util.Objects;
 
 public class Baby extends Person{
 
-    public Baby(String name, LocationStates location, MindStates mind) {
+    public Baby(String name, AlongTheStory.Place location, MindStates mind) {
         super(name, location, mind);
     }
 
     @Override
     public String toString() {
         String name = this.getName();
-        LocationStates location = this.getLocation();
+        LocationStates location = this.getPlace().getLocation();
         MindStates mind = this.getMind();
         return "Carlson{" +
                 "name=" + name +
@@ -28,13 +29,13 @@ public class Baby extends Person{
         if (o == null || o.getClass() != this.getClass()) return false;
         Baby that = (Baby) o;
         return (this.getName()).equals(that.getName())
-                && (this.getLocation()).equals(that.getLocation())
+                && (this.getPlace()).equals(this.getPlace())
                 && (this.getMind()).equals(that.getMind());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getLocation(), this.getMind());
+        return Objects.hash(this.getName(), this.getPlace(), this.getMind());
     }
 
 }

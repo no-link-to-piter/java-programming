@@ -2,31 +2,43 @@ package person;
 
 import enums.LocationStates;
 import enums.MindStates;
+import enums.NatureStates;
 import enums.SoundStates;
 import interfaces.MindAction;
 import interfaces.SoundAction;
+import story.AlongTheStory;
 
 public abstract class Person implements MindAction, SoundAction {
     private final String name;
-    private LocationStates location;
+    private AlongTheStory.Place place;
     private MindStates mind;
 
-    public Person(String name, LocationStates location, MindStates mind) {
+    private NatureStates nature;
+
+    public Person(String name, AlongTheStory.Place place, MindStates mind, NatureStates nature) {
         this.name = name;
-        this.location = location == null ? LocationStates.DEFAULT : location;
+        this.place = place;
         this.mind = mind == null ? MindStates.CALM : mind;
+        this.nature = nature;
+    }
+
+    public Person(String name, AlongTheStory.Place place, MindStates mind) {
+        this.name = name;
+        this.place = place;
+        this.mind = mind == null ? MindStates.CALM : mind;
+        this.nature = NatureStates.NORMAL;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public LocationStates getLocation() {
-        return this.location;
+    public AlongTheStory.Place getPlace() {
+        return this.place;
     }
 
-    public void setLocation(LocationStates location) {
-        this.location = location;
+    public void setPlace(AlongTheStory.Place place) {
+        this.place = place;
     }
 
     public MindStates getMind() {
@@ -35,6 +47,14 @@ public abstract class Person implements MindAction, SoundAction {
 
     public void setMind(MindStates mind) {
         this.mind = mind;
+    }
+
+    public void setNature(NatureStates nature) {
+        this.nature = nature;
+    }
+
+    public NatureStates getNature() {
+        return nature;
     }
 
     @Override

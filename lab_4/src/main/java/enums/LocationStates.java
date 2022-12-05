@@ -3,5 +3,7 @@ package enums;
 public enum LocationStates {
     FLAT,
     ROOF,
-    DEFAULT
+    WHITE_STEAMER,
+    BEHIND_THE_SCENE,
+    SOMEWHERE
 }

@@ -4,6 +4,7 @@ import enums.LocationStates;
 import enums.MindStates;
 import item.Bun;
 import item.Pistol;
+import story.AlongTheStory;
 
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class Carlson extends Person {
     private Pistol pistol;
     private Bun bun;
 
-    public Carlson(String name, LocationStates location, MindStates mind) {
+    public Carlson(String name, AlongTheStory.Place location, MindStates mind) {
         super(name, location, mind);
     }
 
@@ -34,7 +35,7 @@ public class Carlson extends Person {
     @Override
     public String toString() {
         String name = this.getName();
-        LocationStates location = this.getLocation();
+        LocationStates location = this.getPlace().getLocation();
         MindStates mind = this.getMind();
         Pistol p = this.getPistol();
         Bun b = this.getBun();
@@ -54,7 +55,7 @@ public class Carlson extends Person {
         if (o == null || o.getClass() != this.getClass()) return false;
         Carlson that = (Carlson) o;
         return (this.getName()).equals(that.getName())
-                && (this.getLocation()).equals(that.getLocation())
+                && (this.getPlace()).equals(that.getPlace())
                 && (this.getMind()).equals(that.getMind())
                 && this.getPistol().equals(that.getPistol())
                 && this.getBun().equals(that.getBun());
@@ -62,7 +63,7 @@ public class Carlson extends Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getLocation(), this.getMind(), this.getPistol(), this.getBun());
+        return Objects.hash(this.getName(), this.getPlace(), this.getMind(), this.getPistol(), this.getBun());
     }
 
     public void loadPistol(int bullets) {
