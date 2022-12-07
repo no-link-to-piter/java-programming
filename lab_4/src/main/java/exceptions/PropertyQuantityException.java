@@ -9,6 +9,6 @@ public class PropertyQuantityException extends RuntimeException{
 
     public PropertyQuantityException(int quantity) {
         super("Нельзя установить такое количество: " + quantity);
-        this.quantity = 1;
+        this.quantity = 0;
     }
 }

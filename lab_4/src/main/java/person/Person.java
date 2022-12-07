@@ -4,6 +4,7 @@ import enums.LocationStates;
 import enums.MindStates;
 import enums.NatureStates;
 import enums.SoundStates;
+import exceptions.MindException;
 import interfaces.MindAction;
 import interfaces.SoundAction;
 import story.AlongTheStory;
@@ -45,7 +46,8 @@ public abstract class Person implements MindAction, SoundAction {
         return this.mind;
     }
 
-    public void setMind(MindStates mind) {
+    public void setMind(MindStates mind) throws MindException{
+        if (mind == null) throw new MindException(mind);
         this.mind = mind;
     }
 
@@ -60,23 +62,27 @@ public abstract class Person implements MindAction, SoundAction {
     @Override
     public void changeMind(MindStates state) {
         MindStates prevMind = this.getMind();
-        setMind(state);
         String personName = this.getName();
-        if (state == MindStates.ANGRY) {
-            System.out.println(personName +
-                    (prevMind != MindStates.ANGRY ? " начинает злиться" : " остается злым"));
-        } else if (state == MindStates.GRUMPY) {
-            System.out.println(personName +
-                    (prevMind != MindStates.GRUMPY ? " начинает сердиться" : " остается сердитым"));
-        } else if (state == MindStates.EXULTANT) {
-            System.out.println(personName +
-                    (prevMind != MindStates.EXULTANT ? " начинает ликовать" : " остается ликующим"));
-        } else if (state == MindStates.CALM) {
-            System.out.println(personName +
-                    (prevMind != MindStates.CALM ? " успокаивается" : " остается спокойным"));
-        } else if (state == MindStates.SCARED) {
-            System.out.println(personName +
-                    (prevMind != MindStates.SCARED ? " пугается" : " остается испуганным"));
+        try {
+            setMind(state);
+            if (state == MindStates.ANGRY) {
+                System.out.println(personName +
+                        (prevMind != MindStates.ANGRY ? " начинает злиться" : " остается злым"));
+            } else if (state == MindStates.GRUMPY) {
+                System.out.println(personName +
+                        (prevMind != MindStates.GRUMPY ? " начинает сердиться" : " остается сердитым"));
+            } else if (state == MindStates.EXULTANT) {
+                System.out.println(personName +
+                        (prevMind != MindStates.EXULTANT ? " начинает ликовать" : " остается ликующим"));
+            } else if (state == MindStates.CALM) {
+                System.out.println(personName +
+                        (prevMind != MindStates.CALM ? " успокаивается" : " остается спокойным"));
+            } else if (state == MindStates.SCARED) {
+                System.out.println(personName +
+                        (prevMind != MindStates.SCARED ? " пугается" : " остается испуганным"));
+            }
+        } catch (MindException e) {
+            e.printStackTrace();
         }
     }
 

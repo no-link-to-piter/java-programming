@@ -4,13 +4,19 @@ import enums.LocationStates;
 import enums.MindStates;
 import enums.NatureStates;
 import enums.RelativeStates;
-import item.Bun;
-import item.Pistol;
 import person.Person;
 
 import java.util.Objects;
 
 public class AlongTheStory {
+
+    private String storyName;
+
+    public static final LocationStates defaultStoryCharacterNextLocation = LocationStates.SOMEWHERE;
+
+    public AlongTheStory(String storyName) {
+        this.storyName = storyName;
+    }
 
     public static class ThirdPartyPerson extends Person {
 
@@ -21,14 +27,14 @@ public class AlongTheStory {
                                 LocationStates nextLocation) {
             super(name, place, mind);
             this.relativeType = relativeType;
-            this.nextLocation = nextLocation;
+            this.nextLocation = nextLocation == null ? defaultStoryCharacterNextLocation : nextLocation;
         }
 
         public ThirdPartyPerson(String name, Place place, MindStates mind, RelativeStates relativeType,
                                 LocationStates nextLocation, NatureStates nature) {
             super(name, place, mind, nature);
             this.relativeType = relativeType;
-            this.nextLocation = nextLocation;
+            this.nextLocation = nextLocation == null ? defaultStoryCharacterNextLocation : nextLocation;
         }
 
         public void setRelativeType(RelativeStates relativeType) {
@@ -84,12 +90,18 @@ public class AlongTheStory {
         private LocationStates location;
 
         public Place(LocationStates location){
+            System.out.println("Зарегестрированно новое местоположение `" + location + "` в истории `" + storyName + "`");
             this.location = location == null ? LocationStates.BEHIND_THE_SCENE : location;
         }
 
         public LocationStates getLocation() {
             return this.location;
         }
+
+        public void setLocation(LocationStates location) {
+            this.location = location;
+        }
+
 
         @Override
         public boolean equals(Object o) {

@@ -10,6 +10,7 @@ import person.Carlson;
 import person.HouseResident;
 import story.AlongTheStory;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Main {
@@ -37,7 +38,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AlongTheStory alongTheStory = new AlongTheStory();
+        AlongTheStory alongTheStory = new AlongTheStory("История малыша");
+
+        HashMap<String, LocationStates> newCharacters = new HashMap<String, LocationStates>();
 
         AlongTheStory.Place flat = alongTheStory.new Place(LocationStates.FLAT);
         AlongTheStory.Place roof = alongTheStory.new Place(LocationStates.ROOF);
@@ -76,13 +79,14 @@ public class Main {
         Main.thirdPartyInfoHandler(friendBosse);
         Main.thirdPartyInfoHandler(friendBetan);
 
-        OneTimeCharacterAction frekenbok = new OneTimeCharacterAction() {
+        OneTimeCharacterAction character = new OneTimeCharacterAction() {
             @Override
-            public void displayAction() {
-                System.out.println("Фрекенбок приедет и будет следить за Малышом пока родителей не будет");
+            public void displayAction(String name, LocationStates location, String action) {
+                newCharacters.put(name, location);
+                System.out.println(name + " " + action);
             }
         };
-        frekenbok.displayAction();
+        character.displayAction("Фрекенбок", LocationStates.FLAT, "приедет и будет следить за Малышом пока родителей не будет");
 
         try {
             carlson.setPistol(new Pistol(1));
